@@ -157,6 +157,13 @@ Sentry.init({
     // /soppforhold/goteborg, altså en åpnet presse-lenke. Kjent støy i Sentry-
     // dokumentasjonen.
     'Object Not Found Matching Id',
+    // Supabase auth-js tar en Navigator LockManager-lås rundt sesjonsfornying,
+    // med «ifAvailable». Holder en annen fane av samme opprinnelse låsen i
+    // akkurat det øyeblikket, kaster biblioteket en uhåndtert avvisning og
+    // prøver igjen selv. Ingen bruker merker det; kjent støy oppstrøms
+    // (supabase/auth-js). Sett første gang 2026-09-10 på /apenhet, 0 brukere.
+    /Navigator LockManager lock/,
+    'NavigatorLockAcquireTimeoutError',
     // Offline-kartcachen fyller Cache API på små telefoner.
     'QuotaExceededError'
   ],
